@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Text, View, StyleSheet} from "react-native";
 import { DataTable } from "react-native-paper";
-
+import moment from "moment";
 
 const Todo = () => {
   const [data, setData] = useState([]);
@@ -18,7 +18,7 @@ const Todo = () => {
       return (
         <DataTable.Row key={index}>
           <DataTable.Cell style = {styles.cell}><Text style={styles.cellText}>{item.name}</Text></DataTable.Cell>
-          <DataTable.Cell style = {styles.cell}><Text style={styles.cellText}>{item.due}</Text></DataTable.Cell>
+          <DataTable.Cell style = {styles.cell}><Text style={styles.cellText}>{moment(item.due).format("ddd, MMM Do YYYY")}</Text></DataTable.Cell>
           <DataTable.Cell style = {styles.cell}><Text style={styles.cellText}>{item.done===false? "false": "true"}</Text></DataTable.Cell>
         </DataTable.Row>
       );
